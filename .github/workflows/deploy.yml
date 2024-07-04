@@ -18,3 +18,8 @@ jobs:
         run: docker build -t mkvskyx/complex-docker-react -f ./client/Dockerfile.dev .
       - name: Test
         run: docker run -e CI=true mkvskyx/complex-docker-react npm test -- --coverage
+      - name: Production Build
+        run: docker build -t mkvskyx/multi-client ./client
+        run: docker build -t mkvskyx/multi-nginx ./nginx
+        run: docker build -t mkvskyx/multi-server ./server
+        run: docker build -t mkvskyx/multi-worker ./worker
